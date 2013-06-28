@@ -8,6 +8,10 @@ Direct IO does IO to and from disk without buffering data in the OS.
 It is useful when you are reading or writing lots of data you don't
 want to fill the OS cache up with.
 
+See here for package docs
+
+    http://go.pkgdoc.org/github.com/ncw/directio
+
 Install
 -------
 
