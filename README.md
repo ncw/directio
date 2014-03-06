@@ -2,7 +2,7 @@ DirectIO
 ========
 
 This is library for the Go language to enable use of Direct IO under
-all supported OSes of Go.
+all supported OSes of Go (except openbsd and plan9).
 
 Direct IO does IO to and from disk without buffering data in the OS.
 It is useful when you are reading or writing lots of data you don't

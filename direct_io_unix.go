@@ -1,4 +1,6 @@
-// Direct IO for linux
+// Direct IO for Unix
+
+// +build !windows,!darwin,!openbsd,!plan9
 
 package directio
 
