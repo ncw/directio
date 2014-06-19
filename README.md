@@ -29,7 +29,7 @@ Instead of using os.OpenFile use directio.OpenFile
 And when reading or writing blocks, make sure you do them in chunks of
 directio.BlockSize using memory allocated by directio.AlignedBlock
 
-	block := directio.AlignedBlock(BlockSize)
+	block := directio.AlignedBlock(directio.BlockSize)
         _, err := io.ReadFull(in, block)
 
 License
