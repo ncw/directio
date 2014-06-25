@@ -55,4 +55,4 @@ Authors
 Contributors
 ------------
 
-- Your name goes here!
+- Pavel Odintsov <pavel.odintsov@gmail.com>
