@@ -2,11 +2,12 @@ package directio_test
 
 import (
 	"bytes"
-	"github.com/ncw/directio"
 	"io"
 	"io/ioutil"
 	"os"
 	"testing"
+
+	"github.com/ncw/directio"
 )
 
 func TestDirectIo(t *testing.T) {
@@ -63,4 +64,9 @@ func TestDirectIo(t *testing.T) {
 	if !bytes.Equal(block1, block2) {
 		t.Fatal("Read not the same as written")
 	}
+}
+
+func TestZeroSizedBlock(t *testing.T) {
+	// This should not panic!
+	directio.AlignedBlock(0)
 }

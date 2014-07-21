@@ -23,6 +23,8 @@ import (
 
 // alignment returns alignment of the block in memory
 // with reference to AlignSize
+//
+// Can't check alignment of a zero sized block as &block[0] is invalid
 func alignment(block []byte, AlignSize int) int {
 	return int(uintptr(unsafe.Pointer(&block[0])) & uintptr(AlignSize-1))
 }
@@ -40,9 +42,12 @@ func AlignedBlock(BlockSize int) []byte {
 		offset = AlignSize - a
 	}
 	block = block[offset : offset+BlockSize]
-	a = alignment(block, AlignSize)
-	if a != 0 {
-		log.Fatal("Failed to align block")
+	// Can't check alignment of a zero sized block
+	if BlockSize != 0 {
+		a = alignment(block, AlignSize)
+		if a != 0 {
+			log.Fatal("Failed to align block")
+		}
 	}
 	return block
 }
