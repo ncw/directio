@@ -10,7 +10,7 @@ want to fill the OS cache up with.
 
 See here for package docs
 
-  http://go.pkgdoc.org/github.com/ncw/directio
+  http://godoc.org/github.com/ncw/directio
 
 Install
 -------
