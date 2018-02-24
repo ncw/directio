@@ -29,6 +29,11 @@ func alignment(block []byte, AlignSize int) int {
 	return int(uintptr(unsafe.Pointer(&block[0])) & uintptr(AlignSize-1))
 }
 
+// IsAligned checks wether passed byte slice is aligned
+func IsAligned(block []byte) bool {
+	return alignment(block, AlignSize) == 0
+}
+
 // AlignedBlock returns []byte of size BlockSize aligned to a multiple
 // of AlignSize in memory (must be power of two)
 func AlignedBlock(BlockSize int) []byte {
@@ -44,8 +49,7 @@ func AlignedBlock(BlockSize int) []byte {
 	block = block[offset : offset+BlockSize]
 	// Can't check alignment of a zero sized block
 	if BlockSize != 0 {
-		a = alignment(block, AlignSize)
-		if a != 0 {
+		if !IsAligned(block) {
 			log.Fatal("Failed to align block")
 		}
 	}
