@@ -31,6 +31,9 @@ func alignment(block []byte, AlignSize int) int {
 
 // IsAligned checks wether passed byte slice is aligned
 func IsAligned(block []byte) bool {
+	if AlignSize == 0 {
+		return true
+	}
 	return alignment(block, AlignSize) == 0
 }
 
